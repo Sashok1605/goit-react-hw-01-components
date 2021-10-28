@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import TransactionHistory from '../TransactionHistory/TransactionHistory';
 import s from './TransactionList.module.css';
+
 const TransactionList = ({ transactions }) => {
   return (
     <table className={s.table}>
@@ -19,4 +21,14 @@ const TransactionList = ({ transactions }) => {
   );
 };
 
+TransactionList.propTypes = {
+  transactions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
 export default TransactionList;
